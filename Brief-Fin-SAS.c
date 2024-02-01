@@ -84,3 +84,47 @@ void deleteTask() {
         printf("Numéro de tâche invalide!\n");
     }
 }
+
+void sortByDeadline() {
+    for (int i = 0; i < taskCount - 1; i++) {
+        for (int j = 0; j < taskCount - i - 1; j++) {
+            if (strcmp(taskList[j].deadline, taskList[j + 1].deadline) > 0) {
+                struct Task temp = taskList[j];
+                taskList[j] = taskList[j + 1];
+                taskList[j + 1] = temp;
+            }
+        }
+    }
+
+    printf("Tâches triées par date d'échéance (ordre croissant)!\n");
+}
+
+void filterByPriority() {
+    int priorityFilter;
+    printf("Entrez la priorité à filtrer (1-5) : ");
+    scanf("%d", &priorityFilter);
+
+    printf("\nTâches avec priorité %d :\n", priorityFilter);
+    for (int i = 0; i < taskCount; i++) {
+        if (taskList[i].priority == priorityFilter) {
+            printf("Description : %s, Date d'échéance : %s, Priorité : %d, Statut : %s\n",
+                   taskList[i].description, taskList[i].deadline, taskList[i].priority,
+                   taskList[i].status ? "Complète" : "Incomplète");
+        }
+    }
+}
+
+void filterByStatus() {
+    int statusFilter;
+    printf("Entrez le statut à filtrer (0 pour incomplète, 1 pour complète) : ");
+    scanf("%d", &statusFilter);
+
+    printf("\nTâches avec statut %s :\n", statusFilter ? "Complète" : "Incomplète");
+    for (int i = 0; i < taskCount; i++) {
+        if (taskList[i].status == statusFilter) {
+            printf("Description : %s, Date d'échéance : %s, Priorité : %d, Statut : %s\n",
+                   taskList[i].description, taskList[i].deadline, taskList[i].priority,
+                   taskList[i].status ? "Complète" : "Incomplète");
+        }
+    }
+}
