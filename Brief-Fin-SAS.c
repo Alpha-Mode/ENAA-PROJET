@@ -25,3 +25,11 @@ void addTask() {
     taskList[taskCount++] = newTask;
     printf("Tâche ajoutée avec succès!\n");
 }
+
+    printf("\nListe des tâches :\n");
+    for (int i = 0; i < taskCount; i++) {
+        printf("%d. Description : %s, Date d'échéance : %s, Priorité : %d, Statut : %s\n",
+               i + 1, taskList[i].description, taskList[i].deadline, taskList[i].priority,
+               taskList[i].status ? "Complète" : "Incomplète");
+    }
+}
