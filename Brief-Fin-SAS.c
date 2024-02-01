@@ -53,3 +53,34 @@ void modifyTask() {
         printf("Numéro de tâche invalide!\n");
     }
 }
+void modifyTaskStatus() {
+    int taskIndex;
+    printf("Entrez le numéro de la tâche à modifier le status: ");
+    scanf("%d", &taskIndex);
+
+    if (taskIndex > 0 && taskIndex <= taskCount) {
+        printf("Entrez la nouvelle status : ");
+        scanf("%d", &taskList[taskIndex - 1].status);
+
+        printf("Tâche modifiée avec succès!\n");
+    } else {
+        printf("Numéro de tâche invalide!\n");
+    }
+}
+
+void deleteTask() {
+    int taskIndex;
+    printf("Entrez le numéro de la tâche à supprimer : ");
+    scanf("%d", &taskIndex);
+
+    if (taskIndex > 0 && taskIndex <= taskCount) {
+        for (int i = taskIndex - 1; i < taskCount - 1; i++) {
+            taskList[i] = taskList[i + 1];
+        }
+
+        taskCount--;
+        printf("Tâche supprimée avec succès!\n");
+    } else {
+        printf("Numéro de tâche invalide!\n");
+    }
+}
