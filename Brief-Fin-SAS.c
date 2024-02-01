@@ -26,10 +26,30 @@ void addTask() {
     printf("Tâche ajoutée avec succès!\n");
 }
 
+void displayTasks() {
     printf("\nListe des tâches :\n");
     for (int i = 0; i < taskCount; i++) {
         printf("%d. Description : %s, Date d'échéance : %s, Priorité : %d, Statut : %s\n",
                i + 1, taskList[i].description, taskList[i].deadline, taskList[i].priority,
                taskList[i].status ? "Complète" : "Incomplète");
+    }
+}
+
+void modifyTask() {
+    int taskIndex;
+    printf("Entrez le numéro de la tâche à modifier : ");
+    scanf("%d", &taskIndex);
+
+    if (taskIndex > 0 && taskIndex <= taskCount) {
+        printf("Entrez la nouvelle description : ");
+        scanf("%s", taskList[taskIndex - 1].description);
+        printf("Entrez la nouvelle date d'échéance (AAAA/MM/JJ) : ");
+        scanf("%s", taskList[taskIndex - 1].deadline);
+        printf("Entrez la nouvelle priorité (1-5) : ");
+        scanf("%d", &taskList[taskIndex - 1].priority);
+
+        printf("Tâche modifiée avec succès!\n");
+    } else {
+        printf("Numéro de tâche invalide!\n");
     }
 }
