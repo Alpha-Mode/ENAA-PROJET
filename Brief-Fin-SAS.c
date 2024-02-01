@@ -128,3 +128,57 @@ void filterByStatus() {
         }
     }
 }
+
+int main() {
+    int choice;
+
+    do {
+        printf("\n===== Application de Gestion de Tâches =============\n");
+        printf("	1. Ajouter une Tâche\n");
+        printf("	2. Afficher la Liste des Tâches\n");
+        printf("	3. Modifier une Tâche\n");
+        printf("	4. Modifier le status de la Tâche\n");
+        printf("	5. Ordonner les Tâches par Date d'échéance\n");
+        printf("	6. Filtrer les Tâches par Priorité\n");
+        printf("	7. Filtrer les Tâches par Statut\n");
+        printf("	8. Supprimer une Tâche\n");
+        printf("	0. Quitter l'Application\n");
+        printf("===================================================\n");
+        printf("Entrez votre choix : ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addTask();
+                break;
+            case 2:
+                displayTasks();
+                break;
+            case 3:
+                modifyTask();
+                break;
+            case 4:
+                modifyTaskStatus();
+                break;
+            case 5:
+                sortByDeadline();
+                break;
+            case 6:
+                filterByPriority();
+                break;
+            case 7:
+                filterByStatus();
+                break;
+            case 8:
+                deleteTask();
+                break;
+            case 0:
+                printf("Au revoir!\n");
+                break;
+            default:
+                printf("Choix invalide. Veuillez réessayer.\n");
+        }
+    } while (choice != 0);
+
+    return 0;
+}
